@@ -24,4 +24,4 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64
-          tags: ghcr.io/iceybcomms/n8n-with-tools:1
+          tags: ghcr.io/iceybcomms/n8n-with-tools:2
