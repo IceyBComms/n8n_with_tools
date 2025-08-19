@@ -1,8 +1,9 @@
-FROM n8nio/n8n:latest
+FROM n8nio/n8n:alpine
 
 USER root
-RUN apt-get update && apt-get install -y ffmpeg python3-pip \
- && python3 -m pip install -U yt-dlp opencv-python-headless numpy \
- && rm -rf /var/lib/apt/lists/*
+# Install tools on Alpine (apk instead of apt-get)
+RUN apk add --no-cache ffmpeg python3 py3-pip \
+ && python3 -m pip install --no-cache-dir -U pip \
+ && python3 -m pip install --no-cache-dir yt-dlp opencv-python-headless numpy
 
 USER node
