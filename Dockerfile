@@ -1,9 +1,14 @@
 FROM n8nio/n8n:latest
 
 USER root
-# n8n:latest is Alpine-based → use apk + pip
-RUN apk add --no-cache ffmpeg python3 py3-pip \
- && python3 -m pip install --no-cache-dir -U pip \
- && python3 -m pip install --no-cache-dir yt-dlp opencv-python-headless numpy
+# Alpine-based image: use apk. Install tools we need and bash for Execute Command nodes.
+RUN apk add --no-cache \
+      ffmpeg \
+      python3 \
+      py3-pip \
+      yt-dlp \
+      py3-numpy \
+      py3-pillow \
+      bash
 
 USER node
